@@ -41,4 +41,12 @@ describe('Shop factory', function(){
     expect(shop.total).toEqual(42);
   });
 
+  it('can calculate total price of more than one item', function(){
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[0]);
+    shop.totalPrice();
+    expect(shop.total).toEqual(126);
+  });
+
 });
