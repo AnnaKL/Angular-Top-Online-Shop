@@ -2,15 +2,16 @@
   "name": "angular-top-online-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.1.x"
   },
+  "main": "server.js",
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "node app.js",
-    "test": "karma start ./tests/karma.conf.js"
+    "start": "node server.js",
+    "test": "karma start tests/karma.conf.js"
   },
   "author": "",
   "license": "ISC",
