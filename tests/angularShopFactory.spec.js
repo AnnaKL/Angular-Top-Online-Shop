@@ -113,6 +113,36 @@ describe('Shop factory', function(){
     expect(shop.totalPrice()).toEqual(0);
   });
 
+  it('allows £15 voucher to be applied', function(){
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[1]);
+    expect(shop.totalPrice()).toEqual(117);
+    shop.applyVoucher(15);
+    expect(shop.totalPrice()).toEqual(102);
+  });
+
+  it('£15 voucher can\'t be applied twice', function(){
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[1]);
+    expect(shop.totalPrice()).toEqual(117);
+    shop.applyVoucher(15);
+    shop.applyVoucher(15);
+    expect(shop.totalPrice()).toEqual(102);
+  });
+
+  it('£15 voucher can\'t be applied when order is equal 0', function(){
+    expect(shop.totalPrice()).toEqual(0);
+    shop.applyVoucher(15);
+    expect(shop.totalPrice()).toEqual(0);
+  })
+
+  it('£15 voucher can\'t be applied when order does not include Footware', function(){
+    shop.addToBasket(items[1]);
+    expect(shop.totalPrice()).toEqual(75);
+    shop.applyVoucher(15);
+    expect(shop.totalPrice()).toEqual(75);
+  })
+
 
 
 });
