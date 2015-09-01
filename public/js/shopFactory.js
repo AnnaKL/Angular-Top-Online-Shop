@@ -6,6 +6,10 @@ angularShop.factory('ShopFactory', function(Flash){
 
   service.order = order;
   service.prices = prices;
+  service.voucherValue = 0;
+  service.isFiveVoucherApplied = false;
+  service.isTenVoucherApplied = false;
+  service.isFifteenVoucherApplied = false;
 
 
 service.items = {
@@ -118,14 +122,59 @@ service.removeItemFromBasket = function(item) {
 service.totalPrice = function() {
   var total = 0
   for (var i = 0; i < prices.length; total += prices[i++]);
-    return total;
+    if(total != 0) {
+     total = total- service.voucherValue;
+    }
+  return total;
 };
 
 service.removeItemFromBasket = function(item) {
   order.splice(order.indexOf(item), 1);
   prices.splice(prices.indexOf(item.price), 1);
   item.quantity ++;
+  service.voucherValue = 0;
+  this.makeVouchersAvailable();
 };
+
+service.areShoesOrdered = function() {
+  for(var i=0; i < order.length; i++) {
+    if(order[i].category.indexOf("Footwear") !=-1) {
+      return true
+    }
+  }
+};
+
+service.applyVoucher = function(voucher) {
+  if(voucher === 5 && service.isFiveVoucherApplied === false) {service.applyFivePoundsVoucher()};
+  if(voucher === 10 && service.isTenVoucherApplied === false) {service.applyTenPoundsVoucher()};
+  if(voucher === 15 && service.isFifteenVoucherApplied === false) {service.applyFifteenPoundsVoucher()};
+};
+
+service.makeVouchersAvailable = function() {
+  service.isFiveVoucherApplied = false;
+  service.isTenVoucherApplied = false;
+  service.isFifteenVoucherApplied = false;
+};
+
+service.applyFivePoundsVoucher = function() {
+  service.isFiveVoucherApplied = true;
+  service.voucherValue += 5;
+};
+
+service.applyTenPoundsVoucher = function() {
+  if(service.totalPrice() > 50 ) {
+    service.isTenVoucherApplied = true;
+    service.voucherValue += 10;
+  } else {Flash.create('info', "You need to spend more than $50 pounds to use £10 voucher.")}
+};
+
+service.applyFifteenPoundsVoucher = function() {
+  if(service.totalPrice() > 75 && service.areShoesOrdered()) {
+    service.isFifteenVoucherApplied = true;
+    service.voucherValue += 15;
+  } else {Flash.create('info', "You need to spend more than $75 pounds and buy a footwear to use £15 voucher.")}
+};
+
 
 return service;
 

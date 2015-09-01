@@ -69,4 +69,27 @@ describe('Shop factory', function(){
     expect(items[0].quantity).toEqual(4);
   });
 
+  it('allows £5 voucher to be applied', function(){
+    shop.addToBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(42);
+    shop.applyVoucher(5);
+    expect(shop.totalPrice()).toEqual(37);
+  });
+
+  it('£5 voucher can\'t be applied twice', function(){
+    shop.addToBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(42);
+    shop.applyVoucher(5);
+    shop.applyVoucher(5);
+    expect(shop.totalPrice()).toEqual(37);
+  });
+
+  it('£5 voucher can\'t be apploed when order is equal 0', function(){
+    expect(shop.totalPrice()).toEqual(0);
+    shop.applyVoucher(5);
+    expect(shop.totalPrice()).toEqual(0);
+  });
+
+
+
 });
