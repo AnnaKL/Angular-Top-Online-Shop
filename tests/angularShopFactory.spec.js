@@ -35,4 +35,10 @@ describe('Shop factory', function(){
     expect(shop.order[0].quantity).toEqual(3);
   });
 
+  it('can calculate total order price of the basket', function(){
+    shop.addToBasket(items[0]);
+    shop.totalPrice();
+    expect(shop.total).toEqual(42);
+  });
+
 });

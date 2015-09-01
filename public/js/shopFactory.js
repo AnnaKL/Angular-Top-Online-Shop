@@ -6,6 +6,7 @@ angularShop.factory('ShopFactory', function(Flash){
 
   service.order = order;
   service.prices = prices;
+  service.total = 0;
 
 
 service.items = {
@@ -113,6 +114,13 @@ service.removeItemFromBasket = function(item) {
   order.splice(order.indexOf(item), 1);
   prices.splice(prices.indexOf(item.price), 1);
   item.quantity ++;
+};
+
+service.totalPrice = function() {
+  for (var i = 0; i < prices.length; i++){
+     service.total += prices[i];
+   }
+   return service.total
 };
 
 return service;
