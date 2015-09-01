@@ -1,1 +1,1 @@
-var app = angular.module('angularShop', ['ngResource', 'flash']);
+var angularShop = angular.module('angularShop', ['ngResource', 'flash']);
