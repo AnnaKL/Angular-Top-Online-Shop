@@ -29,5 +29,10 @@ describe('Shop factory', function(){
     expect(shop.order).toEqual([{name: "Suede Shoes, Blue", price: 42, quantity: 3, category: "Womens Footwear"}])
   });
 
+  it('can remove an item form stock and update quantity', function(){
+    expect(items[0].quantity).toEqual(4);
+    shop.addToBasket(items[0]);
+    expect(shop.order[0].quantity).toEqual(3);
+  });
 
 });
