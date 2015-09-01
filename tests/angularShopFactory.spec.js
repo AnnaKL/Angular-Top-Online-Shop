@@ -90,6 +90,29 @@ describe('Shop factory', function(){
     expect(shop.totalPrice()).toEqual(0);
   });
 
+  it('allows £10 voucher to be applied', function(){
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(84);
+    shop.applyVoucher(10);
+    expect(shop.totalPrice()).toEqual(74);
+  });
+
+  it('£10 voucher can\'t be applied twice', function(){
+    shop.addToBasket(items[0]);
+    shop.addToBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(84);
+    shop.applyVoucher(10);
+    shop.applyVoucher(10);
+    expect(shop.totalPrice()).toEqual(74);
+  });
+
+  it('£10 voucher can\'t be apploed when order is equal 0', function(){
+    expect(shop.totalPrice()).toEqual(0);
+    shop.applyVoucher(10);
+    expect(shop.totalPrice()).toEqual(0);
+  });
+
 
 
 });
