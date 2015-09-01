@@ -117,23 +117,17 @@ service.removeItemFromBasket = function(item) {
   order.splice(order.indexOf(item), 1);
   prices.splice(prices.indexOf(item.price), 1);
   item.quantity ++;
+  service.voucherValue = 0;
+  this.makeVouchersAvailable();
 };
 
 service.totalPrice = function() {
   var total = 0
   for (var i = 0; i < prices.length; total += prices[i++]);
     if(total != 0) {
-     total = total- service.voucherValue;
+     total = total.toFixed(2)- service.voucherValue;
     }
   return total;
-};
-
-service.removeItemFromBasket = function(item) {
-  order.splice(order.indexOf(item), 1);
-  prices.splice(prices.indexOf(item.price), 1);
-  item.quantity ++;
-  service.voucherValue = 0;
-  this.makeVouchersAvailable();
 };
 
 service.areShoesOrdered = function() {

@@ -23,6 +23,9 @@ describe('Shop factory', function(){
       }]
   }));
 
+  it('starts with an empty basket', function(){
+    expect(shop.order).toEqual([])
+  });
 
   it('can add item do the basket', function(){
     shop.addToBasket(items[0]);

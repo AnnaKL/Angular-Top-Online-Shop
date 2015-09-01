@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="angularShop">
+  <head>
+      <meta charset="utf-8">
+      <title>Angular Top Online Shop</title>
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body ng-controller="ShopController as control">
+    <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-default">
+           <div class="navbar header">
+            <h1>Welcome to Top Online Shop</h1>
+            </div>
+      </nav>
+      <div class="row">
+        <div class="col-md-8">
+
+          <section>
+            <div class="row" ng-repeat="(type,items) in control.shop.items">
+              <h1>{{type}}</h1>
+              <div class="col-md-6" ng-repeat="item in items">
+                <h4>{{item.name}}</h4>
+                <h4>Price: {{item.price}}</h4>
+                <h4 class="item-quantity">Quantity: {{item.quantity}}</h4>
+                <button id="buy" class="btn btn-info" ng-if="item.quantity != 0" ng-click="control.shop.addToBasket(item); control.setTab(1)">Buy</button>
+                <button id="sold" class="btn btn-default" ng-if="item.quantity === 0">Sold</button>
+                <img class="img" ng-src="{{item.image}}">
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-4">
+          <div flash-message="5000"></div>
+          <section>
+              <div class="basket" ng-show="control.isSet(1)" ng-if="control.shop.totalPrice() !=0">
+              <h2>Basket</h2>
+                  <button class="btn btn-info" id="voucher" ng-click="control.shop.applyVoucher(5)">£5 Voucher</button>
+                  <button class="btn btn-info" id="voucher" ng-click="control.shop.applyVoucher(10)">£10 Voucher</button>
+                  <button class="btn btn-info" id="voucher" ng-click="control.shop.applyVoucher(15)">£15 Voucher</button>
+                <div class="row" ng-repeat="(index, item) in control.shop.order track by $index">
+                  <h4 class="item-name">{{item.name}}</h4>
+                  <h4 class="item-price" >Price: £{{item.price}}</h4>
+                  <button id="remove" class="btn btn-info" ng-click="control.shop.removeItemFromBasket(item)">Remove</button>
+                </div>
+                  <h2> Total: £{{control.shop.totalPrice()}}</h2>
+              </div>
+          </section >
+        </div>
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/shopController.js"></script>
+    <script src="js/shopFactory.js"></script>
+  </body>

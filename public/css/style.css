@@ -1,1 +1,44 @@
+@media {
+  .container{
+    width: 1500px;
+  }
+}
 
+.navbar {
+  background-color: #5bc0de;
+}
+
+body {
+  font-family: sans-serif;
+  padding-top: 100px;
+}
+
+a {
+  font-size: 20px;
+}
+
+
+.img {
+  width: 300px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.btn {
+  margin-left: 20px;
+}
+
+.item-quantity, .item-price, #buy, #sold #remove{
+  display: inline;
+}
+
+.item-name {
+  text-decoration: underline;
+}
+
+.basket {
+  margin-top: 50px;
+  text-align: center;
+  border-style: solid;
+  border-color: #31b0d5;
+}
