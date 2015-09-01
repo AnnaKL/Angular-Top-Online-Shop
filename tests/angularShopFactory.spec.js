@@ -61,5 +61,12 @@ describe('Shop factory', function(){
     expect(shop.totalPrice()).toEqual(0);
   });
 
+  it('updates quantity when item returned to stock', function(){
+    expect(items[0].quantity).toEqual(4);
+    shop.addToBasket(items[0]);
+    expect(items[0].quantity).toEqual(3);
+    shop.removeItemFromBasket(items[0])
+    expect(items[0].quantity).toEqual(4);
+  });
 
 });
