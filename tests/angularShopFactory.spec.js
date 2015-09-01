@@ -37,16 +37,14 @@ describe('Shop factory', function(){
 
   it('can calculate total order price of the basket', function(){
     shop.addToBasket(items[0]);
-    shop.totalPrice();
-    expect(shop.total).toEqual(42);
+    expect(shop.totalPrice()).toEqual(42);
   });
 
   it('can calculate total price of more than one item', function(){
     shop.addToBasket(items[0]);
     shop.addToBasket(items[0]);
     shop.addToBasket(items[0]);
-    shop.totalPrice();
-    expect(shop.total).toEqual(126);
+    expect(shop.totalPrice()).toEqual(126);
   });
 
   it('can remove item from the basket', function(){
@@ -54,6 +52,13 @@ describe('Shop factory', function(){
     expect(shop.order.length).toEqual(1);
     shop.removeItemFromBasket(items[0]);
     expect(shop.order.length).toEqual(0);
+  });
+
+  it('updates total price when item returned to stock', function(){
+    shop.addToBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(42);
+    shop.removeItemFromBasket(items[0]);
+    expect(shop.totalPrice()).toEqual(0);
   });
 
 

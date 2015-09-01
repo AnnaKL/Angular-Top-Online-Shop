@@ -6,7 +6,6 @@ angularShop.factory('ShopFactory', function(Flash){
 
   service.order = order;
   service.prices = prices;
-  service.total = 0;
 
 
 service.items = {
@@ -117,10 +116,9 @@ service.removeItemFromBasket = function(item) {
 };
 
 service.totalPrice = function() {
-  for (var i = 0; i < prices.length; i++){
-     service.total += prices[i];
-   }
-   return service.total
+  var total = 0
+  for (var i = 0; i < prices.length; total += prices[i++]);
+    return total;
 };
 
 service.removeItemFromBasket = function(item) {
