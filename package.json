@@ -7,6 +7,9 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "node app.js",
     "test": "karma start ./tests/karma.conf.js"
   },
   "author": "",
