@@ -123,6 +123,12 @@ service.totalPrice = function() {
    return service.total
 };
 
+service.removeItemFromBasket = function(item) {
+  order.splice(order.indexOf(item), 1);
+  prices.splice(prices.indexOf(item.price), 1);
+  item.quantity ++;
+};
+
 return service;
 
 })

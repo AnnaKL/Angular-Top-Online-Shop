@@ -49,4 +49,12 @@ describe('Shop factory', function(){
     expect(shop.total).toEqual(126);
   });
 
+  it('can remove item from the basket', function(){
+    shop.addToBasket(items[0]);
+    expect(shop.order.length).toEqual(1);
+    shop.removeItemFromBasket(items[0]);
+    expect(shop.order.length).toEqual(0);
+  });
+
+
 });
