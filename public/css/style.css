@@ -4,31 +4,28 @@
   }
 }
 
+
 .navbar {
   background-color: #5bc0de;
 }
 
 body {
   font-family: sans-serif;
-  padding-top: 100px;
+  padding-top: 10em;
 }
-
-a {
-  font-size: 20px;
-}
-
 
 .img {
-  width: 300px;
-  margin-top: 50px;
-  margin-left: 20px;
+  width: 20em;
+  margin-top: 2em;
+  margin-left: 2em;
 }
 
 .btn {
-  margin-left: 20px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
-.item-quantity, .item-price, #buy, #sold #remove{
+.item-quantity, #sold, #buy {
   display: inline;
 }
 
@@ -37,8 +34,18 @@ a {
 }
 
 .basket {
-  margin-top: 50px;
+  margin-top: 4em;
   text-align: center;
   border-style: solid;
   border-color: #31b0d5;
+  position: fixed;
 }
+
+.basket-item {
+  margin-top: 0.5em;
+}
+
+.msg {
+  position: fixed;
+}
+

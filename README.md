@@ -33,6 +33,18 @@ Tested with:
 
 ##Approach:
 
+This is my second attempt on this challenge.
+
+After initial feedback I tried to address all highlited issues on ionic application. Please see the repository here [Top Online Shop](https://github.com/AnnaKL/Top-Online-Shop).
+However, I also decided to have another go and use pure AngularJS as I felt more comfortable with it.
+Both of these applications contains similar logic, which follows MVC principles and had been refactored to get rid of repetition and make the code more readeable.
+I built both of them by applying TDD principles with Karma unit testing and Protractor UI testing.
+This project is a SPA(Single Page Application) optimized for desktop and styled with Bootstrap and CSS.
+It displays all provided data in sections seperating Female and Male Wardrobe categories.
+The basket appears only when used adds an item to an order and dissapears when all items are deleted.
+All three vouchers are located in the basket and their requirements can be found in User Stories above. Vouchers can be applied only once. However, if user decides to remove any of the items from the basket any previously used discounts are cancelled and vouchers are active again. I've used Angular Flash module to create and show flash messages with information about requirements, if any of them is not met and user tried to apply the voucher.
+I also used NodeJS Express as a server.
+
 ##File structure:
 
 * Module is located in ```public/js/app.js```
@@ -48,7 +60,7 @@ Tested with:
 Please make sure that you have Node.js and Bower installed. Then:
 ```
 git clone git@github.com:AnnaKL/Angular-Top-Online-Shop.git
-Angular-Top-Online-Shop
+cd Angular-Top-Online-Shop
 bower install
 npm install
 npm start

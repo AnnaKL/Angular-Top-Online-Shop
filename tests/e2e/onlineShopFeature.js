@@ -28,7 +28,7 @@ describe('Angular shop', function() {
 
   it('can add item to the basket', function(){
     addToBasket.click();
-    expect(basketItem.getText()).toEqual('Suede Shoes, Blue');
+    expect(basketItem.getText()).toContain('Suede Shoes, Blue');
   });
 
   it('display out-of-stock button when item quantity is 0', function(){
@@ -54,7 +54,7 @@ describe('Angular shop', function() {
 
   it('can remove item from the basket', function(){
     addToBasket.click();
-    expect(basketItem.getText()).toEqual('Suede Shoes, Blue');
+    expect(basketItem.getText()).toContain('Suede Shoes, Blue');
     removeFromBasket.click();
     expect(basketItem).toBeUndefined;
   });

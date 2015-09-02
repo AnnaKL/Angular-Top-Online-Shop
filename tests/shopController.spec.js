@@ -13,7 +13,7 @@ describe('Shop Controller', function(){
    }));
 
 
-  it('should have a Game Factory defined', function() {
+  it('should have a Shop Factory defined', function() {
     expect(ShopFactoryMock).toBeDefined();
   });
 
