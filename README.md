@@ -36,9 +36,12 @@ Tested with:
 This is my second attempt on this challenge.
 
 After initial feedback I tried to address all highlited issues on ionic application. Please see the repository here [Top Online Shop](https://github.com/AnnaKL/Top-Online-Shop).
+
 However, I also decided to have another go and use pure AngularJS as I felt more comfortable with it.
 Both of these applications contains similar logic, which follows MVC principles and had been refactored to get rid of repetition and make the code more readeable.
+
 I built both of them by applying TDD principles with Karma unit testing and Protractor UI testing.
+
 This project is a SPA(Single Page Application) optimized for desktop and styled with Bootstrap and CSS.
 It displays all provided data in sections seperating Female and Male Wardrobe categories.
 The basket appears only when used adds an item to an order and dissapears when all items are deleted.
